@@ -1,16 +1,9 @@
-import {AppProps} from 'next/app';
-import {useEffect, useState} from 'react';
+import { AppProps } from "next/app";
 
-function App({Component, pageProps}: AppProps) {
-  const [isServer, setIsServer] = useState(true);
-  useEffect(() => {
-    setIsServer(false);
-  }, []);
-  if (isServer) return null;
-
+function App({ Component, pageProps }: AppProps) {
   return (
     <div suppressHydrationWarning>
-      {typeof window === 'undefined' ? null : <Component {...pageProps} />}
+      <Component {...pageProps} />
     </div>
   );
 }
